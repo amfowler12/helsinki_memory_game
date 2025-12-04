@@ -22,8 +22,11 @@ class CardComponent extends PositionComponent with TapCallbacks {
     required Vector2 size,
     required this.onTap,
   }) : super(position: position, size: size, anchor: Anchor.topLeft) {
-    _spriteComponent =
-        SpriteComponent(sprite: backSprite, size: size, anchor: Anchor.topLeft);
+    _spriteComponent = SpriteComponent(
+      sprite: backSprite,
+      size: size,
+      anchor: Anchor.topLeft,
+    );
   }
 
   @override
@@ -38,7 +41,12 @@ class CardComponent extends PositionComponent with TapCallbacks {
     onTap(this);
   }
 
-  /// Reveal front sprite with flip animation
+  /// keep outer component size and inner sprite size in sync
+  void updateSize(Vector2 newSize) {
+    size = newSize;
+    _spriteComponent.size = newSize;
+  }
+
   void reveal({double duration = 0.18}) {
     if (isFaceUp || isMatched) return;
 
@@ -61,7 +69,6 @@ class CardComponent extends PositionComponent with TapCallbacks {
     );
   }
 
-  /// Hide front sprite with flip animation
   void hide({double duration = 0.18}) {
     if (!isFaceUp || isMatched) return;
 
@@ -84,7 +91,6 @@ class CardComponent extends PositionComponent with TapCallbacks {
     );
   }
 
-  /// Small "pop" when matched
   void match({double duration = 0.25}) {
     isMatched = true;
 

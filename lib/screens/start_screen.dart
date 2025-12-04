@@ -23,32 +23,49 @@ class StartScreen extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                   SizedBox(height: 24),
-                  Text('Helsinki Memory', style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, fontFamily: 'Arial')),
+                  Text(
+                    'Helsinki Memory',
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Arial',
+                    ),
+                  ),
                   SizedBox(height: 12),
                   Text(
                     'Find matching pairs of Helsinki landmarks. Train your memory and learn the city!',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontFamily: 'Arial'),
                   ),
-                SizedBox(height: 32),
-                ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/levels'),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Color(0xFF0000BF),
-                    side: BorderSide(color: Color(0xFF0000BF), width: 2),
+                  SizedBox(height: 32),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(context, '/levels'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Color(0xFF0000BF),
+                      side: BorderSide(color: Color(0xFF0000BF), width: 2),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 18,
+                        vertical: 12,
+                      ),
+                      child: Text(
+                        'Start',
+                        style: TextStyle(fontSize: 18, fontFamily: 'Arial'),
+                      ),
+                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-                    child: Text('Start', style: TextStyle(fontSize: 18, fontFamily: 'Arial')),
+                  SizedBox(height: 18),
+                  Text(
+                    'Tip: works on touch devices — tap cards to flip.',
+                    style: TextStyle(fontFamily: 'Arial'),
                   ),
-                ),
-                SizedBox(height: 18),
-                Text('Tip: works on touch devices — tap cards to flip.', style: TextStyle(fontFamily: 'Arial')),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
-    ));
+    );
   }
 }

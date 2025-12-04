@@ -5,7 +5,7 @@ class LevelSelectScreen extends StatefulWidget {
   const LevelSelectScreen({super.key});
 
   @override
-  _LevelSelectScreenState createState() => _LevelSelectScreenState();
+  State<LevelSelectScreen> createState() => _LevelSelectScreenState();
 }
 
 class _LevelSelectScreenState extends State<LevelSelectScreen> {
@@ -25,35 +25,62 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final maxWidth = 1100.0;
-    final isNarrow = MediaQuery.of(context).size.width < 600; // breakpoint example
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final crossAxisCount = width < 520
+        ? 1
+        : width < 900
+        ? 2
+        : 3;
+
     return Scaffold(
+      backgroundColor: const Color(0xFFF3F5FB),
       appBar: AppBar(
-        backgroundColor: Color(0xFFE2EFFA),
-        foregroundColor: Colors.black87,
         elevation: 0,
-        title: Text('Choose Level'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black87,
+        title: const Text(
+          'Choose Level',
+          style: TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.3),
+        ),
+        centerTitle: false,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
             onPressed: () async {
               await ProgressService.resetProgress();
-              setState(() {
-                completed = {};
-              });
+              setState(() => completed = {});
             },
-            tooltip: 'Reset progress',
-          )
+          ),
         ],
       ),
-      body: Container(
-        color: Color(0xFFE2EFFA),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: isNarrow ? _buildList() : _buildGrid(),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 960),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Pick a difficulty and start playing.',
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
+                const SizedBox(height: 16),
+                Expanded(
+                  child: GridView.builder(
+                    itemCount: levels.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 4 / 3,
+                    ),
+                    itemBuilder: (_, index) =>
+                        _buildLevelCard(context, levels[index]),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -61,26 +88,49 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
     );
   }
 
-  Widget _buildList() {
-    return ListView(
-      children: levels.map(_buildLevelTile).toList(),
-    );
+  Color _mainColor(int id) {
+    switch (id) {
+      case 1:
+        return const Color(0xFF4CAF50);
+      case 2:
+        return const Color(0xFFFFA726);
+      case 3:
+      default:
+        return const Color(0xFFEF5350);
+    }
   }
 
-  Widget _buildGrid() {
-    return ListView(
-      children: levels.map(_buildLevelTile).toList(),
-    );
+  String _tagText(int id) {
+    switch (id) {
+      case 1:
+        return 'Relaxed';
+      case 2:
+        return 'Challenge';
+      case 3:
+      default:
+        return 'Expert';
+    }
   }
 
-  Widget _buildLevelTile(Map<String, dynamic> level) {
+  Widget _buildLevelCard(BuildContext context, Map<String, dynamic> level) {
     final id = level['id'] as int;
-    final completedFlag = completed.contains(id);
-    return Card(
-      elevation: 4,
-      color: Colors.white,
-      child: SizedBox(
-        height: 120,
+    final name = level['name'] as String;
+    final rows = level['rows'] as int;
+    final cols = level['cols'] as int;
+    final time = level['time'] as int;
+    final isCompleted = completed.contains(id);
+    final color = _mainColor(id);
+
+    return TweenAnimationBuilder<double>(
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+      tween: Tween(begin: 0.98, end: 1),
+      builder: (context, value, child) {
+        return Transform.scale(scale: value, child: child);
+      },
+      child: Material(
+        borderRadius: BorderRadius.circular(24),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: () {
             Navigator.pushNamed(context, '/game', arguments: level).then((_) {
@@ -89,27 +139,143 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
               });
             });
           },
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(level['name'], style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 8),
-                    Text('${level['rows']} x ${level['cols']} cards'),
-                    SizedBox(height: 8),
-                    Text('Time: ${level['time']}s'),
-                  ],
-                ),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [color.withOpacity(0.94), color.withOpacity(0.78)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-              if (completedFlag) Icon(Icons.check_circle, color: Colors.blue, size: 32),
-            ],
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  right: -40,
+                  bottom: -40,
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withOpacity(0.08),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(18),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            name,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                              letterSpacing: 0.2,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(999),
+                              color: Colors.white.withOpacity(0.18),
+                            ),
+                            child: Text(
+                              _tagText(id),
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const Spacer(),
+                          if (isCompleted)
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 5,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(999),
+                                color: Colors.white.withOpacity(0.18),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Icon(
+                                    Icons.check_rounded,
+                                    size: 18,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    'Done',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        children: [
+                          _infoChip(
+                            icon: Icons.grid_view_rounded,
+                            label: '${rows * cols} cards',
+                          ),
+                          const SizedBox(width: 8),
+                          _infoChip(
+                            icon: Icons.timer_rounded,
+                            label: '${time}s',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
+  }
+
+  Widget _infoChip({required IconData icon, required String label}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        color: Colors.white.withOpacity(0.2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 16, color: Colors.white),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
