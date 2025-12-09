@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -194,8 +193,6 @@ class MemoryGame extends FlameGame {
 
   @override
   Future<void> onLoad() async {
-    camera.viewport = MaxViewport();
-    await super.onLoad();
     world = World();
     add(world);
 
