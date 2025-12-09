@@ -1,5 +1,7 @@
 # helsinki_memory_game
 
+Link: https://amfowler12.github.io/helsinki_memory_game/
+
 This is a memory card matching game inspired by the city of Helsinki. The start page has some city line art that I designed to introduce the game. When you click start, you are taken to the levels page that has easy, medium, and hard modes. Selecting a level takes you to the game.
 
 The levels are differentiated by the number of cards and the time. The easiest mode only has 8 cards, or 4 pairs, to memorize. You have 60 seconds to complete the game, or you lose. Medium mode has 12 cards (6 pairs) and 90 seconds. Hard mode has 14 cards (7 pairs) and 150 seconds. Once a level is completed, a check mark will appear on the title. You can click the refresh icon in the corner to reset your progress and start over.
