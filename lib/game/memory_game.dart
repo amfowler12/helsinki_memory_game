@@ -69,7 +69,7 @@ class MemoryGame extends FlameGame {
     'helsinki_suomenlinna.JPG',
     'helsinki_port.JPG',
     'helsinki_church.JPG',
-    'helsinki_market.png',
+    'helsinki_market.JPG',
     'helsinki_aalto.jpg',
     'helsinki_cinnamon.jpg',
     'helsinki_karelian.jpg',
