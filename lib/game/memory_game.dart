@@ -61,15 +61,14 @@ class MemoryGame extends FlameGame {
   final List<CardComponent> cards = [];
 
   final List<String> assetNames = [
-    'helsinki_train.JPG',
-    'helsinki_park.JPG',
-    'helsinki_senate.JPG',
-    'helsinki_market.JPG',
-    'helsinki_tuomiokirkko.JPG',
-    'helsinki_suomenlinna.JPG',
-    'helsinki_port.JPG',
-    'helsinki_church.JPG',
-    'helsinki_market.JPG',
+    'helsinki_train.jpg',
+    'helsinki_park.jpg',
+    'helsinki_senate.jpg',
+    'helsinki_port.jpg',
+    'helsinki_tuomiokirkko.jpg',
+    'helsinki_suomenlinna.jpg',
+    'helsinki_market.jpg',
+    'helsinki_church.jpg',
     'helsinki_aalto.jpg',
     'helsinki_cinnamon.jpg',
     'helsinki_karelian.jpg',
