@@ -55,19 +55,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/Art.png/
-    - assets/back_card.png/
-    - assets/helsinki_aalto.jpg/
-    - assets/helsinki_church.JPG/
-    - assets/helsinki_cinnamon.jpg/
-    - assets/helsinki_karelian.jpg/
-    - assets/helsinki_marimekko.jpg/
-    - assets/helsinki_market.JPG/
-    - assets/helsinki_oodi.jpg/
-    - assets/helsinki_park.JPG/
-    - assets/helsinki_port.JPG/
-    - assets/helsinki_sauna.png/
-    - assets/helsinki_senate.JPG/
-    - assets/helsinki_suomenlinna.JPG/
-    - assets/helsinki_train.JPG/
-    - assets/helsinki_tuomiokirkko.JPG/
+    - assets/images/
