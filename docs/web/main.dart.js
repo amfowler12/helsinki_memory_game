@@ -64321,12 +64321,12 @@ k.sB(p)}},
 h9(a){this.Cn(a)
 this.wx(a)
 this.ww(a)},
-dc(){var s=0,r=A.L(t.H),q=this,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,c0,c1
-var $async$dc=A.M(function(c2,c3){if(c2===1)return A.I(c3,r)
-while(true)switch(s){case 0:c1=A.aiK()
+dc(){var s=0,r=A.L(t.H),q=this,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,c0
+var $async$dc=A.M(function(c1,c2){if(c1===1)return A.I(c2,r)
+while(true)switch(s){case 0:c0=A.aiK()
 q.hJ!==$&&A.bn()
-q.hJ=c1
-q.cL(c1)
+q.hJ=c0
+q.cL(c0)
 p=q.p1.ax.gB()
 q.cL(q.d8)
 q.cL(q.ei)
@@ -64356,145 +64356,147 @@ g=A.X(n,A.k(n).c)
 g.push("back_card.png")
 n=g.length,m=q.a4n$,f=m.a,e=t.Ou,d=t.lu,i=0
 case 2:if(!(i<g.length)){s=4
-break}c=g[i]
+break}c="cards/"+g[i]
 b=f.i(0,c)
 if(b==null){b=A.atE(m.qf(c))
-f.m(0,c,b)}a=b.b
-if(a==null){b=b.a
-if(b==null)b=d.a(b)
-a=new A.aa($.a5,e)
-a.i9(b)
-b=a}else b=a
+f.m(0,c,b)
+c=b}else c=b
+b=c.b
+if(b==null){c=c.a
+if(c==null)c=d.a(c)
+b=new A.aa($.a5,e)
+b.i9(c)
+c=b}else c=b
 s=5
-return A.R(b,$async$dc)
+return A.R(c,$async$dc)
 case 5:case 3:g.length===n||(0,A.y)(g),++i
 s=2
 break
-case 4:a0=q.DV(p,j.length)
-a1=A.cA(a0.i(0,"cols"))
-a2=A.bo(a0.i(0,"gap"))
-a3=t.yw.a(a0.i(0,"cardSize"))
-a4=A.bo(a0.i(0,"startX"))
-a5=A.bo(a0.i(0,"startY"))
-a6=A.bo(a0.i(0,"boardWidth"))
-a7=A.bo(a0.i(0,"boardHeight"))
+case 4:a=q.DV(p,j.length)
+a0=A.cA(a.i(0,"cols"))
+a1=A.bo(a.i(0,"gap"))
+a2=t.yw.a(a.i(0,"cardSize"))
+a3=A.bo(a.i(0,"startX"))
+a4=A.bo(a.i(0,"startY"))
+a5=A.bo(a.i(0,"boardWidth"))
+a6=A.bo(a.i(0,"boardHeight"))
 n=new A.a6(new Float32Array(2))
-n.bt(a6+40,a7+40)
+n.bt(a5+40,a6+40)
 o.sB(n)
 o.ch=B.fk
 o.lC()
 n=p.a[0]
 m=new A.a6(new Float32Array(2))
-m.bt(n/2,a5+a7/2)
+m.bt(n/2,a4+a6/2)
 o=o.ax.d
 o.dF(m)
 o.a2()
-for(o=q.Ku,n=t.v,m=t.d,a8=a3.a,e=q.gYE(),a9=0;a9<j.length;++a9){b0=B.i.hp(a9,a1)
-b1=B.i.b7(a9,a1)
-b2=j[a9]
-d=B.b.jG(k,b2)
-b=f.i(0,b2).a
-b.toString
+for(o=q.Ku,n=t.v,m=t.d,a7=a2.a,e=q.gYE(),a8=0;a8<j.length;++a8){a9=B.i.hp(a8,a0)
+b0=B.i.b7(a8,a0)
+b1=j[a8]
+d=B.b.jG(k,b1)
+c=f.i(0,"cards/"+b1).a
+c.toString
 $.af()
-a=new A.hr(B.bd,B.av,B.bj)
-a.r=B.h.gv()
-a=new A.Gd(a,b,B.U)
-b3=b.b
-b3===$&&A.a()
-b3=b3.a
-b3===$&&A.a()
-b3=J.W(b3.a.width())
-b=b.b.a
-b===$&&A.a()
-b=J.W(b.a.height())
-b4=new Float32Array(2)
-b5=new A.a6(b4)
-b4[1]=b
-b4[0]=b3
-b=new Float32Array(2)
-b[1]=0
-b[0]=0
-b3=b[0]
-b=b[1]
-b4=b5.a
-b6=b3+b4[0]
-b4=b+b4[1]
-a.c=new A.C(b3,b,b6,b4)
-b7=new A.a6(new Float32Array(2))
-b8=new Float32Array(2)
-b8[1]=b4-b
-b8[0]=b6-b3
-b7=b7.a
-b3=b7[0]
-b7=b7[1]
-a.c=new A.C(b3,b7,b3+b8[0],b7+b8[1])
-b8=f.i(0,"back_card.png").a
-b8.toString
-b7=new A.hr(B.bd,B.av,B.bj)
-b7.r=B.h.gv()
-b7=new A.Gd(b7,b8,B.U)
-b=b8.b
-b===$&&A.a()
-b=b.a
-b===$&&A.a()
-b=J.W(b.a.width())
-b8=b8.b.a
-b8===$&&A.a()
-b8=J.W(b8.a.height())
-b3=new Float32Array(2)
-b5=new A.a6(b3)
-b3[1]=b8
-b3[0]=b
-b=new Float32Array(2)
-b[1]=0
-b[0]=0
-b3=b[0]
-b=b[1]
-b4=b5.a
-b6=b3+b4[0]
-b4=b+b4[1]
-b7.c=new A.C(b3,b,b6,b4)
-b8=new A.a6(new Float32Array(2))
-b9=new Float32Array(2)
-b9[1]=b4-b
-b9[0]=b6-b3
-b8=b8.a
-b3=b8[0]
-b8=b8[1]
-b7.c=new A.C(b3,b8,b3+b9[0],b8+b9[1])
-b9=a8[0]
-b8=a8[1]
-b=new Float32Array(2)
-b[1]=a5+b0*(b8+a2)
-b[0]=a4+b1*(b9+a2)
+b=new A.hr(B.bd,B.av,B.bj)
+b.r=B.h.gv()
+b=new A.Gd(b,c,B.U)
+b2=c.b
+b2===$&&A.a()
+b2=b2.a
+b2===$&&A.a()
+b2=J.W(b2.a.width())
+c=c.b.a
+c===$&&A.a()
+c=J.W(c.a.height())
 b3=new Float32Array(2)
 b4=new A.a6(b3)
-b3[1]=a8[1]
-b3[0]=a8[0]
-b3=A.wM()
-b6=$.aB()
-b8=new A.hO(b6,new Float32Array(2))
-b8.dF(b4)
-b8.a2()
-b9=A.aF(A.fo(null),null,!1,n)
-c0=new A.lk(d,a,b7,e,b3,b8,B.aq,0,new A.bZ(b9,0,0,m),null,new A.bQ([]),new A.bQ([]))
-c0.q5(B.aq,null,null,null,0,new A.a6(b),null,null,b4)
+b3[1]=c
+b3[0]=b2
+c=new Float32Array(2)
+c[1]=0
+c[0]=0
+b2=c[0]
+c=c[1]
+b3=b4.a
+b5=b2+b3[0]
+b3=c+b3[1]
+b.c=new A.C(b2,c,b5,b3)
+b6=new A.a6(new Float32Array(2))
+b7=new Float32Array(2)
+b7[1]=b3-c
+b7[0]=b5-b2
+b6=b6.a
+b2=b6[0]
+b6=b6[1]
+b.c=new A.C(b2,b6,b2+b7[0],b6+b7[1])
+b7=f.i(0,"cards/back_card.png").a
+b7.toString
+b6=new A.hr(B.bd,B.av,B.bj)
+b6.r=B.h.gv()
+b6=new A.Gd(b6,b7,B.U)
+c=b7.b
+c===$&&A.a()
+c=c.a
+c===$&&A.a()
+c=J.W(c.a.width())
+b7=b7.b.a
+b7===$&&A.a()
+b7=J.W(b7.a.height())
+b2=new Float32Array(2)
+b4=new A.a6(b2)
+b2[1]=b7
+b2[0]=c
+c=new Float32Array(2)
+c[1]=0
+c[0]=0
+b2=c[0]
+c=c[1]
+b3=b4.a
+b5=b2+b3[0]
+b3=c+b3[1]
+b6.c=new A.C(b2,c,b5,b3)
+b7=new A.a6(new Float32Array(2))
+b8=new Float32Array(2)
+b8[1]=b3-c
+b8[0]=b5-b2
+b7=b7.a
+b2=b7[0]
+b7=b7[1]
+b6.c=new A.C(b2,b7,b2+b8[0],b7+b8[1])
+b8=a7[0]
+b7=a7[1]
+c=new Float32Array(2)
+c[1]=a4+a9*(b7+a1)
+c[0]=a3+b0*(b8+a1)
+b2=new Float32Array(2)
+b3=new A.a6(b2)
+b2[1]=a7[1]
+b2[0]=a7[0]
+b2=A.wM()
+b5=$.aB()
+b7=new A.hO(b5,new Float32Array(2))
+b7.dF(b3)
+b7.a2()
+b8=A.aF(A.fo(null),null,!1,n)
+b9=new A.lk(d,b,b6,e,b2,b7,B.aq,0,new A.bZ(b8,0,0,m),null,new A.bQ([]),new A.bQ([]))
+b9.q5(B.aq,null,null,null,0,new A.a6(c),null,null,b3)
 d=new A.hr(B.bd,B.av,B.bj)
 d.r=B.h.gv()
-b=A.wM()
-a=new A.hO(b6,new Float32Array(2))
-a.dF(b4)
-a.a2()
-b3=A.aF(A.fo(null),null,!1,n)
-d=new A.wg(!1,b7,$,d,null,b,a,B.aq,0,new A.bZ(b3,0,0,m),null,new A.bQ([]),new A.bQ([]))
-d.q5(B.aq,null,null,null,0,null,null,null,b4)
-a.U(d.gW0())
-c0.rx=d
-q.cL(c0)
-o.push(c0)}o=A.aF(A.fo(null),null,!1,n)
+c=A.wM()
+b=new A.hO(b5,new Float32Array(2))
+b.dF(b3)
+b.a2()
+b2=A.aF(A.fo(null),null,!1,n)
+d=new A.wg(!1,b6,$,d,null,c,b,B.aq,0,new A.bZ(b2,0,0,m),null,new A.bQ([]),new A.bQ([]))
+d.q5(B.aq,null,null,null,0,null,null,null,b3)
+b.U(d.gW0())
+b9.rx=d
+q.cL(b9)
+o.push(b9)}o=A.aF(A.fo(null),null,!1,n)
 o=new A.wF(new A.XM(q),0,new A.bZ(o,0,0,m),null,new A.bQ([]),new A.bQ([]))
 o.ax=new A.a3G(1,o.ga7B(),!0,!0,null)
-c1.cL(o)
+c0.cL(o)
 q.wx(p)
 q.ww(p)
 return A.J(null,r)}})
@@ -64560,7 +64562,7 @@ o.b=B.av
 o.z=B.Eq
 p=A.arQ(o,new A.a6(p))
 o=A.c([],t.JV)
-n=A.c(["helsinki_train.jpg","helsinki_park.jpg","helsinki_senate.jpg","helsinki_port.jpg","helsinki_tuomiokirkko.jpg","helsinki_suomenlinna.jpg","helsinki_market.jpg","helsinki_church.jpg","helsinki_aalto.jpg","helsinki_cinnamon.jpg","helsinki_karelian.jpg","helsinki_sauna.png","helsinki_oodi.jpg","helsinki_marimekko.jpg"],t.s)
+n=A.c(["helsinki_train.JPG","helsinki_park.JPG","helsinki_senate.JPG","helsinki_port.JPG","helsinki_tuomiokirkko.JPG","helsinki_suomenlinna.JPG","helsinki_market.JPG","helsinki_church.JPG","helsinki_aalto.jpg","helsinki_cinnamon.jpg","helsinki_karelian.jpg","helsinki_sauna.png","helsinki_oodi.jpg","helsinki_marimekko.jpg"],t.s)
 m=A.aiK()
 l=new Float32Array(2)
 k=A.wM()
@@ -64714,7 +64716,7 @@ $0(){var s=t.X
 return A.ad7(this.a,"/game",this.b,s,s)},
 $S:0}
 A.po.prototype={
-R(a){var s=null,r="Arial",q=4278190271,p=A.aH(4288661995),o=A.arZ(s,s,new A.r8("assets/images/Art.png",s,s)),n=A.w4(s,24,s),m=A.eS("Helsinki Memory",A.eT(s,s,s,s,s,s,s,s,r,s,s,36,s,s,B.c3,s,s,!0,s,s,s,s,s,s,s,s),s),l=A.w4(s,12,s),k=A.eS("Find matching pairs of Helsinki landmarks. Train your memory and learn the city!",A.eT(s,s,s,s,s,s,s,s,r,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.dv),j=A.w4(s,32,s),i=A.agd(s,s,s,s,s,s,s,s,s,A.aH(q),s,s,s,s,s,new A.bs(A.aH(q),2,B.G,-1),s,s,s,s)
+R(a){var s=null,r="Arial",q=4278190271,p=A.aH(4288661995),o=A.arZ(s,s,new A.r8("assets/images/background/Art.png",s,s)),n=A.w4(s,24,s),m=A.eS("Helsinki Memory",A.eT(s,s,s,s,s,s,s,s,r,s,s,36,s,s,B.c3,s,s,!0,s,s,s,s,s,s,s,s),s),l=A.w4(s,12,s),k=A.eS("Find matching pairs of Helsinki landmarks. Train your memory and learn the city!",A.eT(s,s,s,s,s,s,s,s,r,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.dv),j=A.w4(s,32,s),i=A.agd(s,s,s,s,s,s,s,s,s,A.aH(q),s,s,s,s,s,new A.bs(A.aH(q),2,B.G,-1),s,s,s,s)
 return A.a06(s,s,A.fI(A.jz(new A.ee(new A.as(0,900,0,1/0),new A.dH(B.ke,A.nR(A.c([new A.tP(o,150,B.wA,s),n,m,l,k,j,A.agc(new A.dH(B.A_,A.eS("Start",A.eT(s,s,s,s,s,s,s,s,r,s,s,18,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s),s),new A.a2D(a),i),A.w4(s,18,s),A.eS("Tip: works on touch devices \u2014 tap cards to flip.",A.eT(s,s,s,s,s,s,s,s,r,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s)],t.E),B.a6,B.pG,B.aY),s),s),s,s),p,s,s,s,s,s))}}
 A.a2D.prototype={
 $0(){return A.DT(this.a).AN("/levels",null,t.X)},
