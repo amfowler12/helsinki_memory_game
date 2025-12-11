@@ -75,6 +75,21 @@ class MemoryGame extends FlameGame {
     'helsinki_sauna.png',
     'helsinki_oodi.jpg',
     'helsinki_marimekko.jpg',
+    'aalto.png',
+    'cathedral.png',
+    'park.png',
+    'pastry.png',
+    'sauna.png',
+    'port.png',
+    'church.png',
+    'cinnamon.png',
+    'train.png',
+    'senate.png',
+    'suomenlinna.png',
+    'marimekko.png',
+    'oodi.png',
+    'market.png',
+
   ];
 
   final String backAsset = 'back_card.png';
