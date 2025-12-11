@@ -83,13 +83,11 @@ class GameScreen extends StatelessWidget {
                       child: content,
                     );
                   } else {
-                    // 在窄屏上稍微留一点边距，避免顶到边
                     content = Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: content,
                     );
                   }
-
                   return Center(
                     child: Material(
                       color: Colors.transparent,

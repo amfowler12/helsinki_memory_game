@@ -41,7 +41,6 @@ class CardComponent extends PositionComponent with TapCallbacks {
     onTap(this);
   }
 
-  /// keep outer component size and inner sprite size in sync
   void updateSize(Vector2 newSize) {
     size = newSize;
     _spriteComponent.size = newSize;

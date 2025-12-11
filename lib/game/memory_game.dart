@@ -176,7 +176,7 @@ class MemoryGame extends FlameGame {
           startX + c * (cardSz.x + gap),
           startY + r * (cardSz.y + gap),
         )
-        ..updateSize(cardSz); // ⭐ 关键：同步 sprite 大小
+        ..updateSize(cardSz);
     }
   }
 
