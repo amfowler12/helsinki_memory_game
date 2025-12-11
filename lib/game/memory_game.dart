@@ -61,35 +61,20 @@ class MemoryGame extends FlameGame {
   final List<CardComponent> cards = [];
 
   final List<String> assetNames = [
-    'helsinki_train.jpg',
-    'helsinki_park.jpg',
-    'helsinki_senate.jpg',
-    'helsinki_port.jpg',
-    'helsinki_tuomiokirkko.jpg',
-    'helsinki_suomenlinna.jpg',
-    'helsinki_market.jpg',
-    'helsinki_church.jpg',
+    'helsinki_train.JPG',
+    'helsinki_park.JPG',
+    'helsinki_senate.JPG',
+    'helsinki_port.JPG',
+    'helsinki_tuomiokirkko.JPG',
+    'helsinki_suomenlinna.JPG',
+    'helsinki_market.JPG',
+    'helsinki_church.JPG',
     'helsinki_aalto.jpg',
     'helsinki_cinnamon.jpg',
     'helsinki_karelian.jpg',
     'helsinki_sauna.png',
     'helsinki_oodi.jpg',
     'helsinki_marimekko.jpg',
-    'aalto.png',
-    'cathedral.png',
-    'park.png',
-    'pastry.png',
-    'sauna.png',
-    'port.png',
-    'church.png',
-    'cinnamon.png',
-    'train.png',
-    'senate.png',
-    'suomenlinna.png',
-    'marimekko.png',
-    'oodi.png',
-    'market.png',
-
   ];
 
   final String backAsset = 'back_card.png';
@@ -213,43 +198,48 @@ class MemoryGame extends FlameGame {
 
     final view = size;
 
+    // Add HUD and board panel
     add(timerText);
     add(scoreText);
     add(boardPanel);
 
+    // Initialize game state
     score = 0;
     timeLeft = timeLimit;
     remainingPairs = (levelId == 1)
         ? 4
         : (levelId == 2)
-        ? 6
-        : 7;
+            ? 6
+            : 7;
     matchesCount = 0;
     mismatchesCount = 0;
     running = true;
     _updateHud();
 
     final rng = Random();
+
+    // Select random images for this level
     final candidates = List<String>.from(assetNames);
     while (candidates.length < remainingPairs) {
       candidates.addAll(assetNames);
     }
     candidates.shuffle(rng);
-
     final selected = candidates.take(remainingPairs).toList();
+
+    // Duplicate images to create pairs
     final imgs = <String>[];
     for (final s in selected) {
-      imgs
-        ..add(s)
-        ..add(s);
+      imgs..add(s)..add(s);
     }
     imgs.shuffle(rng);
 
+    // Preload images into Flame's cache (include the 'cards/' folder)
     final preload = imgs.toSet().toList()..add(backAsset);
     for (final img in preload) {
-      await images.load(img);
+      await images.load('cards/$img'); // <-- include folder here
     }
 
+    // Compute grid layout
     final layout = _computeGridLayout(view, imgs.length);
     final int gridCols = layout['cols'] as int;
     final double gap = layout['gap'] as double;
@@ -261,11 +251,13 @@ class MemoryGame extends FlameGame {
 
     cardSize = cardSz;
 
+    // Configure board panel
     boardPanel
       ..size = Vector2(boardWidth + 40, boardHeight + 40)
       ..anchor = Anchor.center
       ..position = Vector2(view.x / 2, startY + boardHeight / 2);
 
+    // Create CardComponents
     for (int i = 0; i < imgs.length; i++) {
       final r = i ~/ gridCols;
       final c = i % gridCols;
@@ -273,8 +265,8 @@ class MemoryGame extends FlameGame {
 
       final card = CardComponent(
         pairId: selected.indexOf(asset),
-        frontSprite: Sprite(images.fromCache(asset)),
-        backSprite: Sprite(images.fromCache(backAsset)),
+        frontSprite: Sprite(images.fromCache('cards/$asset')),  // <-- matches preload
+        backSprite: Sprite(images.fromCache('cards/$backAsset')), // <-- matches preload
         position: Vector2(
           startX + c * (cardSz.x + gap),
           startY + r * (cardSz.y + gap),
@@ -287,6 +279,7 @@ class MemoryGame extends FlameGame {
       cards.add(card);
     }
 
+    // Timer for countdown
     world.add(
       TimerComponent(
         period: 1,
@@ -303,8 +296,11 @@ class MemoryGame extends FlameGame {
       ),
     );
 
+    // Layout HUD and board
     _layoutAll(view);
   }
+
+
 
   void _onCardTap(CardComponent card) {
     if (!running) return;

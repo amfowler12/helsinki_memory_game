@@ -18,7 +18,7 @@ class StartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/Art.png',
+                    'assets/images/background/Art.png',
                     height: 150,
                     fit: BoxFit.contain,
                   ),
