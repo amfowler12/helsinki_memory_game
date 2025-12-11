@@ -12,8 +12,4 @@ Finally, the result screen appears after the countdown is done. You will get a "
 
 The Helsinki Memory game introduces you to the city in a fun and memorable way. Try your best to beat all the levels and become a master of the city!
 
-<<<<<<< HEAD
 NOTE: The card images take a while to load so please wait a bit and then it will work!
-=======
-NOTE: The card images take a while to load so please wait a bit and then it will work!
->>>>>>> d0d351a566b55a2ea5a46a162cdd30ba8e08f031
