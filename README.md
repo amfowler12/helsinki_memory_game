@@ -1,6 +1,6 @@
 # helsinki_memory_game
 
-Link: https://amfowler12.github.io/helsinki_memory_game/
+Link: (https://helsinki-memory.miever.net/)
 
 This is a memory card matching game inspired by the city of Helsinki. The start page has some city line art that I designed to introduce the game. When you click start, you are taken to the levels page that has easy, medium, and hard modes. Selecting a level takes you to the game.
 
